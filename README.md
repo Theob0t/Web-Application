@@ -11,16 +11,22 @@ Create a Web App using NodeJS & React : List the best rates - for each Weekend -
 Changement de stratégie : 
 
 SCRAPING ON RELAIS&CHATEAUX (NodeJS)
-1ère étape : Récupérer les urls de chaque hotel Relais & Chateau en France: scraping() relais.js
+> 1ère étape : 
+Récupérer les urls de chaque hotel Relais & Chateau en France: scraping() relais.js
 
-2ème étape : Scraper les urls et définir si le restaurant est étoilé (recherche dans le titre exemple: "Maison Decoret, Hôtel de luxe et Restaurant gastronomique étoilé en ville 1 étoile Vichy – Relais & Châteaux" ): isStar() relais.js
+ > 2ème étape : 
+Scraper les urls et définir si le restaurant est étoilé (recherche dans le titre exemple: "Maison Decoret, Hôtel de luxe et Restaurant gastronomique étoilé en ville 1 étoile Vichy – Relais & Châteaux" ): isStar() relais.js
 
-3ème étape : Récupérer les prix de chaque weekend du mois de Mars pour tous les hotels avec restaurant étoilé : getPrice() relais.js
+> 3ème étape : 
+Récupérer les prix de chaque weekend du mois de Mars pour tous les hotels avec restaurant étoilé : getPrice() relais.js
 Pour cela : 
-4ème étape : On doit fetch une requête : "https://www.relaischateaux.com/fr/popin/availability/check?month=2019-3&idEntity=22926"%7C%7CSTD&pax=2&room=1"
+
+> 4ème étape : 
+On doit fetch une requête : "https://www.relaischateaux.com/fr/popin/availability/check?month=2019-3&idEntity=22926"%7C%7CSTD&pax=2&room=1"
 et on a besoin du 'idEntity' propre à chaque hotel. Pour cela nous avons créé la fonction getidEntity() => idEntity fetch chaque requête de chaque hotel.
 
-5ème étape : Trouver le meilleur prix pour un weekend en Mars 2019 dans un des hotels Relais & Chateaux avec restaurant étoilé Michelin : getBest() relais.js
+> 5ème étape : 
+Trouver le meilleur prix pour un weekend en Mars 2019 dans un des hotels Relais & Chateaux avec restaurant étoilé Michelin : getBest() relais.js
 6ème étape : Récupérez les informations importantes pour ce meilleur prix : Nom de l'hotel, date et prix.
 
 Au final, nous utilisons un fichier JSON contenant 12 hôtels Relais & Chateaux ayant un restaurant étoilé Michelin, leurs prix pour chaque weekend de Mars (nuit du Samedi au Dimanche) et leur disponibilité.
@@ -34,7 +40,7 @@ PS: Pour récupérer les prix au mois de Mars de chaque hôtel en temps réel, i
 2ème étape: Utilisation des fonctions clés et importation des json générés précédemment
 3ème étape: Design en html/css de la page web de l'application
 
-# FINAL RESULT :
+## FINAL RESULT :
 
 We scrap all prices for each hostels with a stared restaurant for every weekend of March.
 We store the results into a json file called March_WE.json.
