@@ -8,20 +8,20 @@ Create a Web App using NodeJS & React : List the best rates - for each Weekend -
 3ème étape : Définir si oui ou non l'hôtel possède un restaurant étoilé en comparant les noms des restaurants de chaque hotel avec la liste des restaurants étoilés Michelin 
 (PB: difficile de faire correspondre le nom du restaurant sur R&C et Michelin car les noms varient parfois)
 
-Changement de stratégie : 
+> Changement de stratégie : 
 
 SCRAPING ON RELAIS&CHATEAUX (NodeJS)
-> 1ère étape : 
+1ère étape : 
 Récupérer les urls de chaque hotel Relais & Chateau en France: scraping() relais.js
 
- > 2ème étape : 
+2ème étape : 
 Scraper les urls et définir si le restaurant est étoilé (recherche dans le titre exemple: "Maison Decoret, Hôtel de luxe et Restaurant gastronomique étoilé en ville 1 étoile Vichy – Relais & Châteaux" ): isStar() relais.js
 
-> 3ème étape : 
+3ème étape : 
 Récupérer les prix de chaque weekend du mois de Mars pour tous les hotels avec restaurant étoilé : getPrice() relais.js
 Pour cela : 
 
-> 4ème étape : 
+4ème étape : 
 On doit fetch une requête : "https://www.relaischateaux.com/fr/popin/availability/check?month=2019-3&idEntity=22926"%7C%7CSTD&pax=2&room=1"
 et on a besoin du 'idEntity' propre à chaque hotel. Pour cela nous avons créé la fonction getidEntity() => idEntity fetch chaque requête de chaque hotel.
 
