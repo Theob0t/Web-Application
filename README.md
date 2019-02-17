@@ -3,9 +3,9 @@ Create a Web App using NodeJS & React : List the best rates - for each Weekend -
 
 ## Scrap the web with nodeJS and Cheerio
 
-1ère étape : Scraper le site michelin pour avoir le noms de tous les restaurants étoilés : scrapingMichelin.js => restaurants.json
-2ème étape : Récupérer les urls de chaque hotel Relais & Chateau en France pour récupérer les informations nécessaires scraping() relais.js => urls_hotels.json
-3ème étape : Définir si oui ou non l'hôtel possède un restaurant étoilé en comparant les noms des restaurants de chaque hotel avec la liste des restaurants étoilés Michelin 
+- 1ère étape : Scraper le site michelin pour avoir le noms de tous les restaurants étoilés : scrapingMichelin.js => restaurants.json
+- 2ème étape : Récupérer les urls de chaque hotel Relais & Chateau en France pour récupérer les informations nécessaires scraping() relais.js => urls_hotels.json
+- 3ème étape : Définir si oui ou non l'hôtel possède un restaurant étoilé en comparant les noms des restaurants de chaque hotel avec la liste des restaurants étoilés Michelin 
 (PB: difficile de faire correspondre le nom du restaurant sur R&C et Michelin car les noms varient parfois)
 
 > Changement de stratégie : 
