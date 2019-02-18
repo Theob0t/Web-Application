@@ -3,46 +3,41 @@ Create a Web App using NodeJS & React : List the best rates - for each Weekend -
 
 ## Scrap the web with nodeJS and Cheerio
 
-- **1ère étape** : Scraper le site michelin pour avoir le noms de tous les restaurants étoilés : *scrapingMichelin.js* => *restaurants.json*
-- **2ème étape** : Récupérer les urls de chaque hotel Relais & Chateau en France pour récupérer les informations nécessaires *scraping() relais.js* => *urls_hotels.json*
-- **3ème étape** : Définir si oui ou non l'hôtel possède un restaurant étoilé en comparant les noms des restaurants de chaque hotel avec la liste des restaurants étoilés Michelin 
-(PB: difficile de faire correspondre le nom du restaurant sur R&C et Michelin car les noms varient parfois)
+- **1st step** : Scrap Michelin website to get names of all starred restaurants : *scrapingMichelin.js* => *restaurants.json*
+- **2nd step** : Scrap Relais & Château website to get the url of each Relais & Chateau hostel in France *scraping() relais.js* => *urls_hotels.json*
+- **3rd step** : Compare the name of a restaurant in *restaurants.json* with the name of the restaurant in each url of Relais & Chateau website and define if the restaurant of this hotel is a starred restaurant.
+(PB: It is harder than expected to match names of the restaurants from the differents website because they can vary a bit)
 
-> Changement de stratégie : 
+> **CHANGE OF STATEGY :** 
 
 #### SCRAPING ON RELAIS&CHATEAUX (NodeJS)
 
-- **1ère étape** : Récupérer les urls de chaque hotel Relais & Chateau en France: *scraping() relais.js*
+- **3rd step** : Scrap each url for every Relais & Chateau hostel in France to get the full name-description of the hostel and know if it includes a starred restaurant (exemple: "Maison Decoret, Hôtel de luxe et Restaurant gastronomique étoilé en ville **1 étoile** Vichy – Relais & Châteaux" ): *isStars() relais.js*
 
-- **2ème étape** : Scraper les urls et définir si le restaurant est étoilé (recherche dans le titre exemple: "Maison Decoret, Hôtel de luxe et Restaurant gastronomique étoilé en ville 1 étoile Vichy – Relais & Châteaux" ): *isStars() relais.js*
+- **4th step** : Fetch the prices of each weekend of March for every hostels with starred restaurant : *getPrice() relais.js*
+>**TO DO THAT :**
 
-- **3ème étape** : Récupérer les prix de chaque weekend du mois de Mars pour tous les hotels avec restaurant étoilé : *getPrice() relais.js*
-Pour cela : 
+- **5th step** : We need to fetch a request for each hotel: "https://www.relaischateaux.com/fr/popin/availability/check?month=2019-3&idEntity=22926"%7C%7CSTD&pax=2&room=1" and to change from one hotel to another we need to change the *'idEntity'* specific to each hostel. To get them, we create the *getidEntity()* function that return the idEntity of each hostel.
 
-- **4ème étape** : On doit fetch une requête : "https://www.relaischateaux.com/fr/popin/availability/check?month=2019-3&idEntity=22926"%7C%7CSTD&pax=2&room=1" et on a besoin du *'idEntity'* propre à chaque hotel. Pour cela nous avons créé la fonction *getidEntity()* => idEntity fetch chaque requête de chaque hotel.
+- **6th step** : Find the best price for each weekend of March 2019 : *getBest() relais.js* 
 
-- **5ème étape** : Trouver le meilleur prix pour un weekend en Mars 2019 dans un des hotels Relais & Chateaux avec restaurant étoilé Michelin : *getBest() relais.js*
+- **7th step** : Fetch the important information of the best price : name of the hostel, date of availability and price.
 
-- **6ème étape** : Récupérez les informations importantes pour ce meilleur prix : Nom de l'hotel, date et prix.
+All in all, we use the JSON file containing the 12 Relais & Châteaux hostel with a starred restaurant, their prices for each weekend of March (the Saturday night) and their availability.
 
-Au final, nous utilisons un fichier JSON contenant 12 hôtels Relais & Chateaux ayant un restaurant étoilé Michelin, leurs prix pour chaque weekend de Mars (nuit du Samedi au Dimanche) et leur disponibilité.
-
-PS: Pour récupérer les prix au mois de Mars de chaque hôtel en temps réel, il faudrait que *getPrice()* soit appelé à chaque fois que l'application est lancée. La fonction prend environ 10 min à générer le *Marc_WE.json*. Pour des raisons d'efficacité, la fonction à générer un json le 15 Février 2019 avec les prix et disponibilitsé à ce jour et n'ai plus appelée dans le programme. Afin que l'application fonctionne correctement nous utilisons ce fichier.json. Les données ne sont donc pas scrapper en temps réel.   
+PS: To get all prices of March for every hostel in real time, *getPrice()* must be called before starting the app or be called continuously. That way, we could have displayed the most accurate and up-to-date list. But this *getPrice()* function takes around 10 min to generate the *March_WE.json* file. In order to avoid losing time while building the app, we ran the function once and used the json file created the 15th February 2019.
 
  
 ## Build a Web App with ReactJS and create-react-app 
 
-- **1ère étape**: Création de l'application et de l'environnement de développement
-- **2ème étape**: Utilisation des fonctions clés et importation des json générés précédemment
-- **3ème étape**: Design en html/css de la page web de l'application
+- **1st step**: Create the web app with create-react-app and deploy the development environment
+- **2nd step**: Use the key functions of *relais.js* and import the json files
+- **3rd step**: Design the page of the web application with html/css
 
 ## FINAL RESULT :
 
-- We scrap all prices for each hostels with a stared restaurant for every weekend of March.
-- We store the results into a json file called *March_WE.json*.
-- We print the results into tabs threw a web application where we can find the best rate for March 2019 and a summary of all hostels with stared restaurant and their price for the weekends of March.
+- We scraped all prices for each hostel with a stared restaurant for every weekend of March.
+- We stored the results into a json file called *March_WE.json*.
+- We displayed the results into tabs threw a web application where we can find the best rate for March 2019 and a summary of all hostels with a stared restaurant and their price for the weekends of March.
 
 ![Screenshot](./relais-chateaux-app/Capture.JPG)
-
-
-
